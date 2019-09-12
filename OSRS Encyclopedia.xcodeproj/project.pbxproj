@@ -13,6 +13,8 @@
 		F639D474232831CF0000CB3D /* OSRS_Encyclopedia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F639D472232831CF0000CB3D /* OSRS_Encyclopedia.xcdatamodeld */; };
 		F639D476232831D10000CB3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F639D475232831D10000CB3D /* Assets.xcassets */; };
 		F639D479232831D10000CB3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F639D477232831D10000CB3D /* LaunchScreen.storyboard */; };
+		F639D481232954490000CB3D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639D480232954490000CB3D /* Item.swift */; };
+		F639D48323296A860000CB3D /* itemRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639D48223296A860000CB3D /* itemRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		F639D475232831D10000CB3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F639D478232831D10000CB3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F639D47A232831D10000CB3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F639D480232954490000CB3D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		F639D48223296A860000CB3D /* itemRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				F639D46B232831CF0000CB3D /* AppDelegate.swift */,
 				F639D46D232831CF0000CB3D /* ViewController.swift */,
 				F639D46F232831CF0000CB3D /* Main.storyboard */,
+				F639D480232954490000CB3D /* Item.swift */,
+				F639D48223296A860000CB3D /* itemRequest.swift */,
 				F639D475232831D10000CB3D /* Assets.xcassets */,
 				F639D477232831D10000CB3D /* LaunchScreen.storyboard */,
 				F639D47A232831D10000CB3D /* Info.plist */,
@@ -138,6 +144,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F639D481232954490000CB3D /* Item.swift in Sources */,
+				F639D48323296A860000CB3D /* itemRequest.swift in Sources */,
 				F639D46E232831CF0000CB3D /* ViewController.swift in Sources */,
 				F639D474232831CF0000CB3D /* OSRS_Encyclopedia.xcdatamodeld in Sources */,
 				F639D46C232831CF0000CB3D /* AppDelegate.swift in Sources */,
