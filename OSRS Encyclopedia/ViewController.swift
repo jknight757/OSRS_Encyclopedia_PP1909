@@ -8,12 +8,7 @@
 
 import UIKit
 
-// using the varaible names from the api, the json can easily be decoded
-struct Item: Decodable {
-    let id: String
-    let name: String
-    
-}
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     let mockList = ["item1","item2","item3","item4","item5","item6","item7"]
@@ -21,31 +16,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // initialize url string and cast to type URL
-        let jsonUrlString = "https://www.osrsbox.com/osrsbox-db/items-summary.json"
-        guard let url = URL(string: jsonUrlString) else {
-            return
-            
-        }
-        
-        URLSession.shared.dataTask(with: url) { (data, response, err) in
-            guard let data = data else {
-                return
-            }
-            
-/*          do{
-                let item = try JSONDecoder().decode(Item.self, from: data)
-                print(item.name)
-            }
-            catch let jsonErr {
-                print("Error serializing json:", jsonErr)
-                
-            }
+        // initialize URL, set up session, pull data with a dataTask, run decoder
+        guard let url = URL(string: "https://www.osrsbox.com/osrsbox-db/items-complete.json") else {return}
+        let session = URLSession.shared
+        let task = session.dataTask(with: url) { (data, _, _) in
+            guard let data = data else {return}
+            do{
+                let item = try JSONDecoder().decode([String: ItemDetail].self, from: data)
+//                print(item.count)
+                /*for (index, value) in item{
+                    print(value.name)
+                }
  */
-            let dataAsString = String(data: data, encoding: .utf8)
-            print(dataAsString)
-        }.resume()
-        // Do any additional setup after loading the view.
+                
+            }catch{
+                print(error)
+            }
+        }
+            task.resume()
     }
     
     // conform to tableView delegate and set up tableView

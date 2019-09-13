@@ -8,119 +8,109 @@
 
 // this class encapsulates all of the data retrived from the API to be decoded
 import Foundation
-
-struct Response: Decodable{
-    var response:Items
-}
-struct Items: Decodable{
-    var items: [ItemDetail]
-}
-struct ItemDetail: Decodable{
-    var id: String
-    var name: String
-}
 /*
-struct ItemResponse:Decodable{
-    var response:Items
-}
-struct Items:Decodable{
-    var items: [itemDetail]
-}
-// primary data pulled
-struct itemDetail: Decodable{
+struct ItemDetail: Decodable{
     var id: Int
     var name: String
-    var members: Bool
-    var tradeable: Bool
-    var GeTradeable: Bool
-    var stackable: Bool
-    var noted: Bool
-    var noteable: Bool
-    var linkedIdItem: Int
-    var linkedIdNoted: Int
-    var linkedIdPlaceHolder: Int
-    var placeHolder: Bool
-    var equipable: Bool
-    var equipableByPlayer: Bool
-    var equipableWeapon: Bool
-    var cost: Int
-    var lowalch: Int
-    var highalch: Int
-    var weight: Double
-    var buyLimit: Int
-    var questItem: Bool
-    var releaseDate: String
-    var duplicate: Bool
-    var examine: String
-    var wikiName: String
-    var wikiUrl: String
-    var equipment: equipmentInfo
-    var weapon: weaponInfo
 }
-// child data of itemDetail pulled
+*/
+struct ItemDetail: Decodable{
+    var id: Int?
+    var name: String?
+    var members: Bool?
+    var tradeable: Bool?
+    var tradeable_on_ge: Bool?
+    var stackable: Bool?
+    var noted: Bool?
+    var noteable: Bool?
+    var linked_id_item: Int?
+    var linked_id_noted: Int?
+    var linked_id_placeHolder: Int?
+    var placeholder: Bool?
+    var equipable: Bool?
+    var equipable_by_player: Bool?
+    var equipable_weapon: Bool?
+    var cost: Int?
+    var lowalch: Int?
+    var highalch: Int?
+    var weight: Double?
+    var buy_limit: Int?
+    var quest_item: Bool?
+    var release_date: String?
+    var duplicate: Bool?
+    var examine: String?
+    var wiki_name: String?
+    var wiki_url: String?
+    var equipment: equipmentInfo?
+    var weapon:  weaponInfo?
+}
+// child node of equipment
 struct equipmentInfo: Decodable{
-    var aStab: Int
-    var aSlash: Int
-    var aCrush: Int
-    var aMagic: Int
-    var aRanged: Int
-    var dStab: Int
-    var dSlash: Int
-    var dCrush: Int
-    var dMagic: Int
-    var dRanged: Int
-    var meleeStrength: Int
-    var rangedStrength: Int
-    var magicDamage: Int
-    var prayer: Int
-    var slot: String
-    var requirements: itemRequirements
+    var attack_stab: Int?
+    var attack_slash: Int?
+    var attack_crush: Int?
+    var attack_magic: Int?
+    var attack_ranged: Int?
+    var defence_stab: Int?
+    var defence_slash: Int?
+    var defence_crush: Int?
+    var defence_magic: Int?
+    var defence_ranged: Int?
+    var melee_strength: Int?
+    var ranged_strength: Int?
+    var magic_damage: Int?
+    var prayer: Int?
+    var slot: String?
+    var requirements: [String: itemRequirements?]?
     
     
 }
+
 // child data of itemDetail pulled
 struct weaponInfo: Decodable{
-    var attackSpeed: Int
-    var weaponType: String
-    var stances: [stancesInfo]
+    var attack_speed: Int?
+    var weapon_type: String?
+    var stances: [String: stancesInfo]?
     
 }
+
 // child data of equipmentInfo pulled
 // these are the skill level requirements to use the item
 struct itemRequirements: Decodable{
-    var _attack: Int
-    var _strength: Int
-    var _defence: Int
-    var _hitpoints: Int
-    var _ranged: Int
-    var _prayer: Int
-    var _magic: Int
-    var _cooking: Int
-    var _woodcutting: Int
-    var _fletching: Int
-    var _fishing: Int
-    var _firemaking: Int
-    var _crafting: Int
-    var _smithing: Int
-    var _mining: Int
-    var _herblore: Int
-    var _agility: Int
-    var _theifing: Int
-    var _slayer: Int
-    var _farming: Int
-    var _runecrafting: Int
-    var _hunter:Int
-    var _construction: Int
+    var attack: Int?
+    var strength: Int?
+    var defence: Int?
+    var hitpoints: Int?
+    var ranged: Int?
+    var prayer: Int?
+    var magic: Int?
+    var cooking: Int?
+    var woodcutting: Int?
+    var fletching: Int?
+    var fishing: Int?
+    var firemaking: Int?
+    var crafting: Int?
+    var smithing: Int?
+    var mining: Int?
+    var herblore: Int?
+    var agility: Int?
+    var theifing: Int?
+    var slayer: Int?
+    var farming: Int?
+    var runecrafting: Int?
+    var hunter: Int?
+    var construction: Int?
     
     
 }
 // child data of weaponInfo
 struct stancesInfo: Decodable{
-    var combatStyle: String
-    var attackType: String
-    var attackStyle: String
-    var experience: String
-    var boosts: String
+    var combatStyle: String?
+    var attackType: String?
+    var attackStyle: String?
+    var experience: String?
+    var boosts: String?
 }
- */
+
+
 

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+/*
 enum ItemError:Error{
     case noDataAvailable
     case canNotProcessData
@@ -40,3 +40,4 @@ struct request{
     }
     
 }
+ */
