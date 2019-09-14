@@ -67,6 +67,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="qUw-hM-Web"/>
+                    <connections>
+                        <outlet property="tableView1" destination="Qz7-QC-nMm" id="oZw-PR-0hX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -78,6 +81,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="d6y-b9-dN1" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yS1-Mf-gFG">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -93,11 +97,45 @@
         <!--Search-->
         <scene sceneID="5FW-J0-etH">
             <objects>
-                <viewController id="dBy-oE-kLc" sceneMemberID="viewController">
+                <viewController id="dBy-oE-kLc" customClass="SearchViewController" customModule="OSRS_Encyclopedia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FcR-U6-qJA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V6i-gR-iCP">
+                                <rect key="frame" x="0.0" y="120" width="414" height="567"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YGT-sI-EJU">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="567"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="uEf-f3-MPy">
+                                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uEf-f3-MPy" id="Mew-RP-c7u">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="YGT-sI-EJU" firstAttribute="leading" secondItem="V6i-gR-iCP" secondAttribute="leading" id="UG4-c9-iDO"/>
+                                    <constraint firstAttribute="trailing" secondItem="YGT-sI-EJU" secondAttribute="trailing" id="b1D-co-ODa"/>
+                                    <constraint firstAttribute="bottom" secondItem="YGT-sI-EJU" secondAttribute="bottom" id="gla-kJ-3e0"/>
+                                    <constraint firstItem="YGT-sI-EJU" firstAttribute="top" secondItem="V6i-gR-iCP" secondAttribute="top" id="v7n-9n-3ge"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="j70-87-vxq" firstAttribute="trailing" secondItem="V6i-gR-iCP" secondAttribute="trailing" id="8ZX-dY-NOM"/>
+                            <constraint firstItem="V6i-gR-iCP" firstAttribute="leading" secondItem="j70-87-vxq" secondAttribute="leading" id="SQZ-DI-Wbe"/>
+                            <constraint firstItem="j70-87-vxq" firstAttribute="bottom" secondItem="V6i-gR-iCP" secondAttribute="bottom" id="el6-76-Eeo"/>
+                            <constraint firstItem="V6i-gR-iCP" firstAttribute="top" secondItem="j70-87-vxq" secondAttribute="top" constant="100" id="wTN-KJ-PFj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="j70-87-vxq"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" id="PdA-ei-w9l"/>

@@ -15,12 +15,12 @@ struct ItemDetail: Decodable{
 }
 */
 struct ItemDetail: Decodable{
-    var id: Int?
-    var name: String?
-    var members: Bool?
-    var tradeable: Bool?
-    var tradeable_on_ge: Bool?
-    var stackable: Bool?
+    var id: Int
+    var name: String
+    var members: Bool
+    var tradeable: Bool
+    var tradeable_on_ge: Bool
+    var stackable: Bool
     var noted: Bool?
     var noteable: Bool?
     var linked_id_item: Int?
@@ -61,7 +61,7 @@ struct equipmentInfo: Decodable{
     var magic_damage: Int?
     var prayer: Int?
     var slot: String?
-    var requirements: [String: itemRequirements?]?
+    var requirements: [String: Int?]?
     
     
 }
@@ -70,7 +70,7 @@ struct equipmentInfo: Decodable{
 struct weaponInfo: Decodable{
     var attack_speed: Int?
     var weapon_type: String?
-    var stances: [String: stancesInfo]?
+    var stances: [stancesInfo]?
     
 }
 
