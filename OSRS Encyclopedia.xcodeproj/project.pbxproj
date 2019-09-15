@@ -16,6 +16,7 @@
 		F639D481232954490000CB3D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639D480232954490000CB3D /* Item.swift */; };
 		F639D48323296A860000CB3D /* itemRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639D48223296A860000CB3D /* itemRequest.swift */; };
 		F639D485232DAF370000CB3D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639D484232DAF370000CB3D /* SearchViewController.swift */; };
+		F639D489232DBEB90000CB3D /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639D488232DBEB90000CB3D /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		F639D480232954490000CB3D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F639D48223296A860000CB3D /* itemRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemRequest.swift; sourceTree = "<group>"; };
 		F639D484232DAF370000CB3D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		F639D488232DBEB90000CB3D /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				F639D46B232831CF0000CB3D /* AppDelegate.swift */,
+				F639D488232DBEB90000CB3D /* TabBarViewController.swift */,
 				F639D46D232831CF0000CB3D /* ViewController.swift */,
 				F639D484232DAF370000CB3D /* SearchViewController.swift */,
 				F639D46F232831CF0000CB3D /* Main.storyboard */,
@@ -151,6 +154,7 @@
 				F639D481232954490000CB3D /* Item.swift in Sources */,
 				F639D48323296A860000CB3D /* itemRequest.swift in Sources */,
 				F639D46E232831CF0000CB3D /* ViewController.swift in Sources */,
+				F639D489232DBEB90000CB3D /* TabBarViewController.swift in Sources */,
 				F639D474232831CF0000CB3D /* OSRS_Encyclopedia.xcdatamodeld in Sources */,
 				F639D46C232831CF0000CB3D /* AppDelegate.swift in Sources */,
 			);

@@ -75,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="-23.188405797101453" y="879.61956521739137"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="ATg-D1-thC">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="d6y-b9-dN1" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="d6y-b9-dN1" customClass="TabBarViewController" customModule="OSRS_Encyclopedia" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yS1-Mf-gFG">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -118,6 +118,10 @@
                                                 </tableViewCellContentView>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="dBy-oE-kLc" id="9V3-gD-sNu"/>
+                                            <outlet property="delegate" destination="dBy-oE-kLc" id="JXb-3P-vgJ"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -128,21 +132,43 @@
                                     <constraint firstItem="YGT-sI-EJU" firstAttribute="top" secondItem="V6i-gR-iCP" secondAttribute="top" id="v7n-9n-3ge"/>
                                 </constraints>
                             </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bst-JF-1tp">
+                                <rect key="frame" x="50.000000000000014" y="70" width="248.33333333333337" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3G-p6-mUV">
+                                <rect key="frame" x="316" y="70" width="48" height="30"/>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="searchClicked:" destination="dBy-oE-kLc" eventType="touchUpInside" id="tmm-z6-nOn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="j70-87-vxq" firstAttribute="trailing" secondItem="V6i-gR-iCP" secondAttribute="trailing" id="8ZX-dY-NOM"/>
+                            <constraint firstItem="Bst-JF-1tp" firstAttribute="top" secondItem="j70-87-vxq" secondAttribute="top" constant="50" id="Cwu-1b-DqJ"/>
+                            <constraint firstItem="Bst-JF-1tp" firstAttribute="width" secondItem="FcR-U6-qJA" secondAttribute="width" multiplier="0.6" id="GyY-BS-MLk"/>
                             <constraint firstItem="V6i-gR-iCP" firstAttribute="leading" secondItem="j70-87-vxq" secondAttribute="leading" id="SQZ-DI-Wbe"/>
                             <constraint firstItem="j70-87-vxq" firstAttribute="bottom" secondItem="V6i-gR-iCP" secondAttribute="bottom" id="el6-76-Eeo"/>
+                            <constraint firstItem="j70-87-vxq" firstAttribute="trailing" secondItem="w3G-p6-mUV" secondAttribute="trailing" constant="50" id="fcd-mv-2QF"/>
+                            <constraint firstItem="Bst-JF-1tp" firstAttribute="leading" secondItem="j70-87-vxq" secondAttribute="leading" constant="50" id="tUg-ME-izK"/>
                             <constraint firstItem="V6i-gR-iCP" firstAttribute="top" secondItem="j70-87-vxq" secondAttribute="top" constant="100" id="wTN-KJ-PFj"/>
+                            <constraint firstItem="w3G-p6-mUV" firstAttribute="top" secondItem="j70-87-vxq" secondAttribute="top" constant="50" id="zil-7x-6iD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="j70-87-vxq"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" id="PdA-ei-w9l"/>
+                    <connections>
+                        <outlet property="SearchBar" destination="Bst-JF-1tp" id="rbE-7E-mGc"/>
+                        <outlet property="SearchTableView" destination="YGT-sI-EJU" id="7k2-qh-ImE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uDs-Fh-0bD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1493" y="880"/>
+            <point key="canvasLocation" x="1492.753623188406" y="879.61956521739137"/>
         </scene>
     </scenes>
 </document>

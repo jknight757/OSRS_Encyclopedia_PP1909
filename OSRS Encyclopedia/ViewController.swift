@@ -19,25 +19,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // initialize URL, set up session, pull data with a dataTask, run decoder
-        guard let url = URL(string: "https://www.osrsbox.com/osrsbox-db/items-complete.json") else {return}
-        let session = URLSession.shared
-        let task = session.dataTask(with: url) { (data, _, _) in
-            guard let data = data else {return}
-            do{
-                // data pulled is decoded then saved to completeList
-                let item = try JSONDecoder().decode([String: ItemDetail].self, from: data)
-                print(item.count)
-                for (index, value) in item{
-                    print(value.name)
-                }
-                self.completeList = item
-                
-            }catch{
-                print(error)
-            }
-        }
-            task.resume()
+        let tabBar = tabBarController as! TabBarViewController
+        completeList = tabBar.apiData
+        //print(completeList.count)
         
     }
    
@@ -57,8 +41,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func button_click(_ sender: Any) {
+        let tabBar = tabBarController as! TabBarViewController
+        completeList = tabBar.apiData
+        print(completeList.count)
       self.tableView1.reloadData()
     }
+
     
 }
 
