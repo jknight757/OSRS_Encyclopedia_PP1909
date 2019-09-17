@@ -11,52 +11,54 @@ import UIKit
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
+    // UI Outlets
     @IBOutlet weak var SearchTableView: UITableView!
     @IBOutlet weak var SearchBar: UITextField!
     
+    // Dictionaries, Itemlist stores items pulled from API, searchResults stores items with searched name
     var itemList: [String: ItemDetail] = [:]
-    var searchResults:[String: ItemDetail] = [:]
+    var searchResults: [ItemDetail] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // access tab bar view controller and pull dictionary of items
         let tabBar = tabBarController as! TabBarViewController
         itemList = tabBar.apiData
         print(itemList.count)
     }
     
-    
+    //configure tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
     }
-    
+    // configure tableView, sets cells equal to results found in search (searchResults)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
-        let indexString = "\(indexPath.row)"
         if searchResults.count != 0{
-        if let textName = searchResults[indexString]?.name{
-                if let textCost = searchResults[indexString]?.cost{
-                    let textHolder = String(textName) + "  "+String(textCost)
-                    cell.textLabel?.text = textHolder
-                }
-            }else{
-                print("Error unwrapping \(searchResults[indexString]?.name)")
+            let textName = searchResults[indexPath.row].name
+            let textCost = searchResults[indexPath.row].cost
+            let textHolder = String(textName) + "  \(textCost!)"
+            cell.textLabel?.text = textHolder
+        
+                
+        }else{
+            print("Error")
             }
-        }
-        
-        
-        
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "ShowSearchDetail", sender: self)
+    }
+    // searches through itemList upon button click, adds results to searchResults dictionary
     @IBAction func searchClicked(_ sender: Any) {
-        searchResults = [:]
+        searchResults = []
         for (index, value) in itemList{
             if let itemName = SearchBar.text{
                 if value.name.contains(itemName) || value.name == itemName{
-                    searchResults.updateValue(value, forKey: index)
-                    print(value.name)
+                    searchResults.append(value)
                     print(value)
-                    
                 }
             }
             else{
@@ -64,6 +66,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
            
         }
+        // reload tableView data and display dictionary counts
         self.SearchTableView.reloadData()
         print(searchResults.count)
         print(itemList.count)

@@ -6,14 +6,9 @@
 //  Copyright © 2019 fullsailStudent. All rights reserved.
 //
 
-// this class encapsulates all of the data retrived from the API to be decoded
+// this class encapsulates all of the data structure retrived from the API and makes it decodable
 import Foundation
-/*
-struct ItemDetail: Decodable{
-    var id: Int
-    var name: String
-}
-*/
+
 struct ItemDetail: Decodable{
     var id: Int
     var name: String

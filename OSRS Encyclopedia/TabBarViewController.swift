@@ -11,6 +11,8 @@ import UIKit
 class TabBarViewController: UITabBarController {
 
     var apiData: [String: ItemDetail] = [:]
+    var apiDataIcons: [UIImage]? = []
+    var savedItems: [ItemDetail] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,18 +36,23 @@ class TabBarViewController: UITabBarController {
             }
         }
         task.resume()
-        // Do any additional setup after loading the view.
+        
+        // initialize URL, set up session, pull data with a dataTask, run decoder
+        guard let iconUrl = URL(string: "https://www.osrsbox.com/osrsbox-db/item-icons/1.") else {return}
+        let iconSession = URLSession.shared
+        let iconTask = iconSession.dataTask(with: iconUrl) { (data, _, _) in
+            guard let data = data else {return}
+            do{
+                let icons = try UIImage(data: data)
+                //self.apiDataIcons = [icons] as! [UIImage]
+                print(icons)
+                
+            }catch{
+                print(error)
+            }
+        }
+        iconTask.resume()
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

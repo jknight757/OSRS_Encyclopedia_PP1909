@@ -15,6 +15,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // dictionary of data pulled from API
     var completeList: [String: ItemDetail] = [:]
+    var savedItems: [ItemDetail] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,20 +27,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
    
     
-    // conform to tableView delegate and set up tableView
+    // configure tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return completeList.count
     }
-    
+    // configure tableView, set cells equal to items found in saved item list
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SavedItemTableViewCell
         let indexString = "\(indexPath.row)"
         let textOutput = completeList[indexString]?.name
-        cell.textLabel?.text = textOutput
+        cell.iconLabel.text = textOutput
 
         return cell
     }
+    // perform segue to detailVC passing cell data
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "ShowSavedItemDetail", sender: self)
+    }
     
+    // load saved item list, reload tableView data
     @IBAction func button_click(_ sender: Any) {
         let tabBar = tabBarController as! TabBarViewController
         completeList = tabBar.apiData
