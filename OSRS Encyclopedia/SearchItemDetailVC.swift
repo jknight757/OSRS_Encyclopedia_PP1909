@@ -23,6 +23,7 @@ class SearchItemDetailVC: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // pull data from tabbar controller
         let tabBar = tabBarController as! TabBarViewController
         savedItems = tabBar.savedItems
         TitleLabel.text = selectedItem?.name
@@ -178,7 +179,6 @@ class SearchItemDetailVC: UIViewController, UITableViewDelegate, UITableViewData
             
             let tabBar = tabBarController as! TabBarViewController
             tabBar.savedItems = savedItems!
-            print(savedItems?.count)
         }
     }
     

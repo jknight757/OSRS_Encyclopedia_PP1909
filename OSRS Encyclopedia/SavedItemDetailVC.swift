@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SavedItemDetailVC: UIViewController {
+class SavedItemDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var TitleLabel: UILabel!
     
@@ -138,6 +138,42 @@ class SavedItemDetailVC: UIViewController {
         
     }
     
-
-
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return itemAttributes.count
+    }
+    // configure tableView, sets cells equal to results found in search (searchResults)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
+        cell.textLabel?.text = itemAttributes[indexPath.row]
+        return cell
+    }
+    
+    // checks if item is in list, if it is then the item is removed and user is alerted
+    // if the item isnt in the list then display alert
+    // saved redacted item list to tab bar controller
+    @IBAction func RemoveItemButtonClicked(_ sender: Any) {
+        var deleted = false
+        if savedItems!.count > 0 {
+            var x = 0
+            for item in savedItems!{
+                if selectedItem!.id == item.id{
+                    savedItems?.remove(at: x)
+                    let alert = UIAlertController(title: "Item removed", message: "The selected item has been removed from your item list.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(alert, animated: true)
+                    deleted = true
+                }
+                x += 1
+            }
+            if !deleted{
+                let alert = UIAlertController(title: "Item already removed", message: "The selected item has already been removed from your item list.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+            }else{
+                let tabBar = tabBarController as! TabBarViewController
+                tabBar.savedItems = savedItems!
+                print(savedItems?.count)
+            }
+        }
+    }
 }

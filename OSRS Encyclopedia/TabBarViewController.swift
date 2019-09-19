@@ -13,6 +13,7 @@ class TabBarViewController: UITabBarController {
     var apiData: [String: ItemDetail] = [:]
     var apiDataIcons: [UIImage]? = []
     var savedItems: [ItemDetail] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,10 +25,6 @@ class TabBarViewController: UITabBarController {
             do{
                 // data pulled is decoded then saved to completeList
                 let item = try JSONDecoder().decode([String: ItemDetail].self, from: data)
-                
-                for (_, value) in item{
-                    //print(value.name)
-                }
                 self.apiData = item
                 print(self.apiData.count)
                 

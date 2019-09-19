@@ -8,25 +8,32 @@
 
 import UIKit
 
+// Home/saved item view controller
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     // UI outlets
     @IBOutlet weak var tableView1: UITableView!
     
-    // dictionary of data pulled from API
+    // locally stored data, all items pulled from api and all items saved by user
     var completeList: [String: ItemDetail] = [:]
     var savedItems: [ItemDetail] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // get data from tab bar controller
         let tabBar = tabBarController as! TabBarViewController
         completeList = tabBar.apiData
         savedItems = tabBar.savedItems
-        //print(completeList.count)
         
     }
-   
+    // update saved items list and table view
+    override func viewDidAppear(_ animated: Bool) {
+        print("View appeared")
+        let tabBar = tabBarController as! TabBarViewController
+        savedItems = tabBar.savedItems
+        self.tableView1.reloadData()
+    }
     
     // configure tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,23 +47,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         return cell
     }
-    // perform segue to detailVC passing cell data
+    // perform segue to detailVC
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "ShowSavedItemDetail", sender: self)
     }
+    // pass cell data to detailVC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          guard let selectedVC = segue.destination as? SavedItemDetailVC else {return}
         selectedVC.selectedItem = savedItems[(tableView1.indexPathForSelectedRow?.row)!]
         tableView1.deselectRow(at: tableView1.indexPathForSelectedRow!, animated: true)
     }
-    // load saved item list, reload tableView data
-    @IBAction func button_click(_ sender: Any) {
-        let tabBar = tabBarController as! TabBarViewController
-        completeList = tabBar.apiData
-        savedItems = tabBar.savedItems
-        print(savedItems.count)
-      self.tableView1.reloadData()
-    }
+   
+    
 
     
 }
