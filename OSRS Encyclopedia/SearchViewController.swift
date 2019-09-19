@@ -48,8 +48,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "ShowSearchDetail", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let selectedVC = segue.destination as? SearchItemDetailVC else {return}
+        selectedVC.selectedItem = searchResults[(SearchTableView.indexPathForSelectedRow?.row)!]
+        SearchTableView.deselectRow(at: SearchTableView.indexPathForSelectedRow!, animated: true)
     }
     // searches through itemList upon button click, adds results to searchResults dictionary
     @IBAction func searchClicked(_ sender: Any) {
@@ -72,5 +76,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print(itemList.count)
         
     }
+    //
+    
     
 }

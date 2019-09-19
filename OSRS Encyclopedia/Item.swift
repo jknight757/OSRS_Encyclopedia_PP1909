@@ -65,7 +65,7 @@ struct equipmentInfo: Decodable{
 struct weaponInfo: Decodable{
     var attack_speed: Int?
     var weapon_type: String?
-    var stances: [stancesInfo]?
+    var stances: [stancesInfo?]
     
 }
 
