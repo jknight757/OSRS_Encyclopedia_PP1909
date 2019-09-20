@@ -27,7 +27,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let tabBar = tabBarController as! TabBarViewController
         completeList = tabBar.apiData
         savedItems = tabBar.savedItems
-
+        
         
     }
     // update saved items list and table view

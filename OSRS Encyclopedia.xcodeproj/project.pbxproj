@@ -20,6 +20,9 @@
 		F639D48D23301BEB0000CB3D /* SavedItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639D48C23301BEB0000CB3D /* SavedItemTableViewCell.swift */; };
 		F639D48F23316CA70000CB3D /* SearchItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639D48E23316CA70000CB3D /* SearchItemDetailVC.swift */; };
 		F639D49123316F630000CB3D /* SavedItemDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639D49023316F630000CB3D /* SavedItemDetailVC.swift */; };
+		F639D493233566D30000CB3D /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639D492233566D30000CB3D /* PersistenceService.swift */; };
+		F639D49623356E7B0000CB3D /* CDItems+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639D49423356E7B0000CB3D /* CDItems+CoreDataClass.swift */; };
+		F639D49723356E7B0000CB3D /* CDItems+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639D49523356E7B0000CB3D /* CDItems+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		F639D48C23301BEB0000CB3D /* SavedItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedItemTableViewCell.swift; sourceTree = "<group>"; };
 		F639D48E23316CA70000CB3D /* SearchItemDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemDetailVC.swift; sourceTree = "<group>"; };
 		F639D49023316F630000CB3D /* SavedItemDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedItemDetailVC.swift; sourceTree = "<group>"; };
+		F639D492233566D30000CB3D /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
+		F639D49423356E7B0000CB3D /* CDItems+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDItems+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F639D49523356E7B0000CB3D /* CDItems+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDItems+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,10 +86,13 @@
 				F639D48C23301BEB0000CB3D /* SavedItemTableViewCell.swift */,
 				F639D480232954490000CB3D /* Item.swift */,
 				F639D48A233016240000CB3D /* ItemIcon.swift */,
+				F639D492233566D30000CB3D /* PersistenceService.swift */,
 				F639D475232831D10000CB3D /* Assets.xcassets */,
 				F639D477232831D10000CB3D /* LaunchScreen.storyboard */,
 				F639D47A232831D10000CB3D /* Info.plist */,
 				F639D472232831CF0000CB3D /* OSRS_Encyclopedia.xcdatamodeld */,
+				F639D49423356E7B0000CB3D /* CDItems+CoreDataClass.swift */,
+				F639D49523356E7B0000CB3D /* CDItems+CoreDataProperties.swift */,
 			);
 			path = "OSRS Encyclopedia";
 			sourceTree = "<group>";
@@ -162,8 +171,11 @@
 				F639D485232DAF370000CB3D /* SearchViewController.swift in Sources */,
 				F639D481232954490000CB3D /* Item.swift in Sources */,
 				F639D48F23316CA70000CB3D /* SearchItemDetailVC.swift in Sources */,
+				F639D49623356E7B0000CB3D /* CDItems+CoreDataClass.swift in Sources */,
+				F639D493233566D30000CB3D /* PersistenceService.swift in Sources */,
 				F639D46E232831CF0000CB3D /* ViewController.swift in Sources */,
 				F639D49123316F630000CB3D /* SavedItemDetailVC.swift in Sources */,
+				F639D49723356E7B0000CB3D /* CDItems+CoreDataProperties.swift in Sources */,
 				F639D489232DBEB90000CB3D /* TabBarViewController.swift in Sources */,
 				F639D48D23301BEB0000CB3D /* SavedItemTableViewCell.swift in Sources */,
 				F639D474232831CF0000CB3D /* OSRS_Encyclopedia.xcdatamodeld in Sources */,

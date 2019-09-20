@@ -27,13 +27,27 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         itemList = tabBar.apiData
         print(itemList.count)
     }
-    /*
+    // encode saved items list and save to core data when searchVC appears
     override func viewDidAppear(_ animated: Bool) {
         let tabBar = tabBarController as! TabBarViewController
-        itemList = tabBar.apiData
-        print(itemList.count)
+        let listHolder = tabBar.savedItems
+        let jsonEncoder = JSONEncoder()
+        var saveItemString = ""
+        jsonEncoder.outputFormatting = .prettyPrinted
+        for item in listHolder{
+            do {
+                let jsonData = try jsonEncoder.encode(item)
+                if let jsonString = String(data: jsonData, encoding: .utf8){
+                    saveItemString += jsonString
+                    print(" List Begins: \(saveItemString)  /////List Ends")
+                }
+            } catch{
+                print("Failed to encode the list: \(error.localizedDescription)")
+            }
+        }
+        
     }
- */
+ 
     //configure tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count

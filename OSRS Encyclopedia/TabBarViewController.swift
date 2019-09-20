@@ -13,9 +13,14 @@ class TabBarViewController: UITabBarController {
     var apiData: [String: ItemDetail] = [:]
     var apiDataIcons: [UIImage]? = []
     var savedItems: [ItemDetail] = []
-
+    let coreDataItems = CDItems(context: PersistenceService.context)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // initialize core data object
+        
+        
         
         // initialize URL, set up session, pull data with a dataTask, run decoder
         guard let url = URL(string: "https://www.osrsbox.com/osrsbox-db/items-complete.json") else {return}
@@ -33,6 +38,8 @@ class TabBarViewController: UITabBarController {
             }
         }
         task.resume()
+        
+        
         
         // initialize URL, set up session, pull data with a dataTask, run decoder
         guard let iconUrl = URL(string: "https://www.osrsbox.com/osrsbox-db/item-icons/1.") else {return}
