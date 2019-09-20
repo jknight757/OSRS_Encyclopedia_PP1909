@@ -13,6 +13,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     // UI outlets
     @IBOutlet weak var tableView1: UITableView!
+
     
     // locally stored data, all items pulled from api and all items saved by user
     var completeList: [String: ItemDetail] = [:]
@@ -21,10 +22,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         // get data from tab bar controller
         let tabBar = tabBarController as! TabBarViewController
         completeList = tabBar.apiData
         savedItems = tabBar.savedItems
+
         
     }
     // update saved items list and table view

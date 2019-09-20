@@ -13,7 +13,7 @@ class TabBarViewController: UITabBarController {
     var apiData: [String: ItemDetail] = [:]
     var apiDataIcons: [UIImage]? = []
     var savedItems: [ItemDetail] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

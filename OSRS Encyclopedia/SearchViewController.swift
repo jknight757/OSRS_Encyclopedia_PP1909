@@ -27,7 +27,13 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         itemList = tabBar.apiData
         print(itemList.count)
     }
-    
+    /*
+    override func viewDidAppear(_ animated: Bool) {
+        let tabBar = tabBarController as! TabBarViewController
+        itemList = tabBar.apiData
+        print(itemList.count)
+    }
+ */
     //configure tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
@@ -57,6 +63,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     // searches through itemList upon button click, adds results to searchResults dictionary
     @IBAction func searchClicked(_ sender: Any) {
+        let tabBar = tabBarController as! TabBarViewController
+        itemList = tabBar.apiData
         searchResults = []
         for (index, value) in itemList{
             if let itemName = SearchBar.text{
