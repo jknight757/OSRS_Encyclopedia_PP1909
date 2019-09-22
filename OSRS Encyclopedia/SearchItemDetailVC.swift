@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 class SearchItemDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // outlets
@@ -179,8 +179,27 @@ class SearchItemDetailVC: UIViewController, UITableViewDelegate, UITableViewData
             
             let tabBar = tabBarController as! TabBarViewController
             tabBar.savedItems = savedItems!
+            let jsonEncoder = JSONEncoder()
+            jsonEncoder.outputFormatting = .prettyPrinted
+            
+            do {
+                let jsonData = try jsonEncoder.encode(selectedItem)
+                if let jsonString = String(data: jsonData, encoding: .utf8){
+                    
+                    let newItem = CDItems(context: PersistenceService.context)
+                    newItem.savedItemsString = jsonString
+                    PersistenceService.saveContext()
+                }
+            } catch{
+                print("Failed to encode the list: \(error.localizedDescription)")
+            }
+            
+        
         }
-    }
+        }
+        
+       
+     
     
-
+    
 }

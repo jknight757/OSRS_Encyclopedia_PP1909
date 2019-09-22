@@ -7,18 +7,49 @@
 //
 
 import UIKit
+import CoreData
 
 class TabBarViewController: UITabBarController {
 
     var apiData: [String: ItemDetail] = [:]
     var apiDataIcons: [UIImage]? = []
     var savedItems: [ItemDetail] = []
-    let coreDataItems = CDItems(context: PersistenceService.context)
+    var saveStrings:  [CDItems] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // initialize core data object
+            // initialize core data object
+        let fetchRequest: NSFetchRequest<CDItems> = CDItems.fetchRequest()
+        do{
+            let saveString = try PersistenceService.context.fetch(fetchRequest)
+            //let objectToDelete = saveString.first!
+            //PersistenceService.context.delete(objectToDelete)
+            //PersistenceService.saveContext()
+            self.saveStrings = saveString
+        } catch{
+                
+        }
+        
+        
+        print(saveStrings.count)
+        for x in saveStrings{
+            print("items \(x.savedItemsString)")
+        }
+        
+        if saveStrings.count != 0{
+            for x in saveStrings{
+                let d = x.savedItemsString?.data(using: .utf8)
+                print(d)
+                    do {
+                        let instance = try JSONDecoder().decode(ItemDetail.self, from: d!)
+                        savedItems.append(instance)
+                    } catch{
+                    
+                    }
+            }
+        }
+    
         
         
         

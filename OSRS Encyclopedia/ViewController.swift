@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 // Home/saved item view controller
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
