@@ -23,24 +23,20 @@ class TabBarViewController: UITabBarController {
         let fetchRequest: NSFetchRequest<CDItems> = CDItems.fetchRequest()
         do{
             let saveString = try PersistenceService.context.fetch(fetchRequest)
-            //let objectToDelete = saveString.first!
-            //PersistenceService.context.delete(objectToDelete)
-            //PersistenceService.saveContext()
             self.saveStrings = saveString
         } catch{
-                
+            
         }
         
         
-        print(saveStrings.count)
+        /*print(saveStrings.count)
         for x in saveStrings{
             print("items \(x.savedItemsString)")
         }
-        
+        */
         if saveStrings.count != 0{
             for x in saveStrings{
                 let d = x.savedItemsString?.data(using: .utf8)
-                print(d)
                     do {
                         let instance = try JSONDecoder().decode(ItemDetail.self, from: d!)
                         savedItems.append(instance)
@@ -64,6 +60,7 @@ class TabBarViewController: UITabBarController {
                 self.apiData = item
                 print(self.apiData.count)
                 
+                
             }catch{
                 print(error)
             }
@@ -73,6 +70,7 @@ class TabBarViewController: UITabBarController {
         
         
         // initialize URL, set up session, pull data with a dataTask, run decoder
+        /*
         guard let iconUrl = URL(string: "https://www.osrsbox.com/osrsbox-db/item-icons/1.") else {return}
         let iconSession = URLSession.shared
         let iconTask = iconSession.dataTask(with: iconUrl) { (data, _, _) in
@@ -87,6 +85,7 @@ class TabBarViewController: UITabBarController {
             }
         }
         iconTask.resume()
+ */
         
     }
 

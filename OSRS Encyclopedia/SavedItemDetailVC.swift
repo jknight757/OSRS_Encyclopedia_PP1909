@@ -15,7 +15,8 @@ class SavedItemDetailVC: UIViewController, UITableViewDelegate, UITableViewDataS
     var selectedItem: ItemDetail?
     var savedItems: [ItemDetail]? = []
     var itemAttributes: [String] = []
-    
+    var updatedItems: [String: ItemDetail] = [:]
+    var updatedValue: [String: Int] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,15 @@ class SavedItemDetailVC: UIViewController, UITableViewDelegate, UITableViewDataS
         savedItems = tabBar.savedItems
         TitleLabel.text = selectedItem?.name
         
+        // if the value has been updated and clicked remove it from updated list
+        for (_, value) in updatedItems{
+            if value.id == selectedItem?.id{
+                let alert = UIAlertController(title: "\(String(describing: selectedItem?.name))'s price changed", message: "The price of \(String(describing: selectedItem?.name)) changed by \(String(describing: updatedValue["\(String(describing: selectedItem?.id))"]))", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+                updatedItems.removeValue(forKey: "\(String(describing: selectedItem?.id))")
+            }
+        }
         // adds item attributes to itemAttributes array
         itemAttributes.append("ID:   \(selectedItem!.id)")
         itemAttributes.append("Name:   \(selectedItem!.name)")
@@ -107,28 +117,28 @@ class SavedItemDetailVC: UIViewController, UITableViewDelegate, UITableViewDataS
             }else{ itemAttributes.append("Weapon type:")}
             if selectedItem?.weapon?.stances != nil{
                 if (selectedItem?.weapon?.stances.count)! >= 1{
-                    if selectedItem?.weapon?.stances[0] != nil{
-                        itemAttributes.append("Combat style:   \(selectedItem!.weapon!.stances[0]!)")
+                    if selectedItem?.weapon?.stances[0]?.combatStyle != nil{
+                        itemAttributes.append("Combat style:   \(String(describing: selectedItem!.weapon!.stances[0]?.combatStyle!))")
                     }else{ itemAttributes.append("Combat style:")}
                 }
                 if (selectedItem?.weapon?.stances.count)! >= 2{
-                    if selectedItem?.weapon?.stances[1] != nil{
-                        itemAttributes.append("Attack type:   \(selectedItem!.weapon!.stances[1]!)")
+                    if selectedItem?.weapon?.stances[1]?.attackType != nil{
+                        itemAttributes.append("Attack type:   \(String(describing: selectedItem!.weapon!.stances[1]?.attackType!))")
                     }else{ itemAttributes.append("Attack type:")}
                 }
                 if (selectedItem?.weapon?.stances.count)! >= 3{
-                    if selectedItem?.weapon?.stances[2] != nil{
-                        itemAttributes.append("Attack style:   \(selectedItem!.weapon!.stances[2]!)")
+                    if selectedItem?.weapon?.stances[2]?.attackStyle != nil{
+                        itemAttributes.append("Attack style:   \(String(describing: selectedItem!.weapon!.stances[2]?.attackStyle!))")
                     }else{ itemAttributes.append("Attack style:")}
                 }
                 if (selectedItem?.weapon?.stances.count)! >= 4{
-                    if selectedItem?.weapon?.stances[3] != nil{
-                        itemAttributes.append("Experience:   \(selectedItem!.weapon!.stances[3]!)")
+                    if selectedItem?.weapon?.stances[3]?.experience != nil{
+                        itemAttributes.append("Experience:   \(String(describing: selectedItem!.weapon!.stances[3]?.experience!))")
                     }else{ itemAttributes.append("Experience:")}
                 }
                 if (selectedItem?.weapon?.stances.count)! >= 5{
-                    if selectedItem?.weapon?.stances[4] != nil{
-                        itemAttributes.append("Boosts:   \(selectedItem!.weapon!.stances[4]!)")
+                    if selectedItem?.weapon?.stances[4]?.boosts != nil{
+                        itemAttributes.append("Boosts:   \(String(describing: selectedItem!.weapon!.stances[4]?.boosts!))")
                     }else{ itemAttributes.append("Boosts:")}
                 }
                 
@@ -152,16 +162,23 @@ class SavedItemDetailVC: UIViewController, UITableViewDelegate, UITableViewDataS
     // if the item isnt in the list then display alert
     // saved redacted item list to tab bar controller
     @IBAction func RemoveItemButtonClicked(_ sender: Any) {
+        let tabBar = tabBarController as! TabBarViewController
+        savedItems = tabBar.savedItems
         var deleted = false
         if savedItems!.count > 0 {
             var x = 0
             for item in savedItems!{
                 if selectedItem!.id == item.id{
-                    savedItems?.remove(at: x)
+                    
                     let alert = UIAlertController(title: "Item removed", message: "The selected item has been removed from your item list.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                     self.present(alert, animated: true)
                     deleted = true
+                    let tabBar = tabBarController as! TabBarViewController
+                    let RI = tabBar.saveStrings[x]
+                    PersistenceService.context.delete(RI)
+                    PersistenceService.saveContext()
+                    savedItems?.remove(at: x)
                 }
                 x += 1
             }
@@ -172,7 +189,6 @@ class SavedItemDetailVC: UIViewController, UITableViewDelegate, UITableViewDataS
             }else{
                 let tabBar = tabBarController as! TabBarViewController
                 tabBar.savedItems = savedItems!
-                print(savedItems?.count)
             }
         }
     }
