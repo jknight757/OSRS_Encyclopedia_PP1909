@@ -286,7 +286,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3G-p6-mUV">
-                                <rect key="frame" x="316" y="89" width="48" height="30"/>
+                                <rect key="frame" x="316" y="89" width="78" height="30"/>
                                 <state key="normal" title="Search"/>
                                 <connections>
                                     <action selector="searchClicked:" destination="dBy-oE-kLc" eventType="touchUpInside" id="tmm-z6-nOn"/>
@@ -309,7 +309,7 @@
                             <constraint firstItem="V6i-gR-iCP" firstAttribute="leading" secondItem="j70-87-vxq" secondAttribute="leading" id="SQZ-DI-Wbe"/>
                             <constraint firstItem="Aon-Q9-oDP" firstAttribute="top" secondItem="Bst-JF-1tp" secondAttribute="bottom" constant="10" id="eAI-Ne-ofS"/>
                             <constraint firstItem="j70-87-vxq" firstAttribute="bottom" secondItem="V6i-gR-iCP" secondAttribute="bottom" id="el6-76-Eeo"/>
-                            <constraint firstItem="j70-87-vxq" firstAttribute="trailing" secondItem="w3G-p6-mUV" secondAttribute="trailing" constant="50" id="fcd-mv-2QF"/>
+                            <constraint firstItem="j70-87-vxq" firstAttribute="trailing" secondItem="w3G-p6-mUV" secondAttribute="trailing" constant="20" id="fcd-mv-2QF"/>
                             <constraint firstItem="w3G-p6-mUV" firstAttribute="leading" secondItem="Bst-JF-1tp" secondAttribute="trailing" constant="17.670000000000002" id="krt-BY-Jmg"/>
                             <constraint firstItem="Bst-JF-1tp" firstAttribute="leading" secondItem="j70-87-vxq" secondAttribute="leading" constant="50" id="tUg-ME-izK"/>
                             <constraint firstItem="V6i-gR-iCP" firstAttribute="top" secondItem="j70-87-vxq" secondAttribute="top" constant="100" id="wTN-KJ-PFj"/>
